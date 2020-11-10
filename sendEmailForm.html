@@ -1,0 +1,79 @@
+ <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body>
+    
+    <div class="container">
+    <div class="row">
+        <div class="input-field col s6">
+          <input id="folioqa" type="text" class="validate" value="<?!= folioQA; ?>" disabled>
+          <label for="folioqa">Folio QA</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="versionChecklist" type="text" class="validate" value="<?!= versionChecklist; ?>" disabled>
+          <label for="versionChecklist">Version</label>
+        </div> 
+         <div class="input-field col s12">
+          <input id="app" type="text" class="validate" value="<?!= app; ?>" disabled>
+          <label for="app">Aplicación</label>
+        </div> 
+        <div class="input-field col s8">
+          <input id="nombre_checklist" type="text" class="validate" value="<?!= nameChecklist; ?>" disabled>
+          <label for="checklist">Nombre checklist</label>
+        </div>
+        <div class="input-field col s4">
+          <a id="btn_generate" class="waves-effect waves-light btn-small" <?!= btnPropertie; ?>>
+          <i class="material-icons right"></i>Generar Checklist</a>
+        </div>        
+        <div class="input-field col s8">
+          <input id="url" type="text" class="validate" value="<?!= urlProcesoqa;?>" disabled>
+          <label for="url">Url</label>
+        </div>
+         <div class="input-field col s4">
+          <a id="btn_getUrl" class="waves-effect waves-light btn-small" <?!= btnPropertieUrl; ?>>
+          <i class="material-icons right"></i>Obtener URL</a>
+        </div>
+        <div class="input-field col s12">
+          <input id="idDoc" type="text" class="validate" value="<?!= idDoc;?>" disabled>
+          <label for="idDoc">IdDoc</label>
+        </div>
+    </div>
+     <div class="row">
+        <div class="input-field col s12">         
+          <input id="email_to" type="text" value="<?!= emailTo; ?>" class="blue-text text-darken-2">
+          <label for="email_to">Para:</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="email_bexqa" type="text" value="<?!= emailQA; ?>," class="blue-text text-darken-2" disabled>
+          <textarea id="email_cc" type="tel" class="materialize-textarea blue-text text-darken-2"><?!=emailsContacts;?></textarea>
+          <label for="email_cc">CC:</label>
+        </div> 
+        <div class="input-field col s12">
+          
+           <input id="email_replyto" type="text" value="<?!= emailReplyTo; ?>" class="blue-text text-darken-2" disabled>
+          <label for="email_replyto">Reply To:</label>
+        </div>   
+         <div class="input-field col s12">
+          <a id="btn_enviarEmail" class="waves-effect waves-light btn-small" <?!= btnPropertieSend; ?>>
+          <i class="material-icons right">cloud</i>Enviar Email</a>
+        </div>
+      </div>
+    
+    </div>
+
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>   
+      <?!=include("sendEmailForm-js"); ?>
+    </body>
+  </html>
+

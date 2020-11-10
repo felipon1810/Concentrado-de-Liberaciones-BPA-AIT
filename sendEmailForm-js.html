@@ -1,0 +1,158 @@
+<script>
+  document.getElementById('btn_generate').addEventListener('click',doCreateChecklist)
+  document.getElementById('btn_enviarEmail').addEventListener('click',doSendEmail)
+  
+  //Funcion para hacer la copia del checklist
+  function doCreateChecklist(){
+  console.log("Version: "+ getVersionChecklist());
+    if(getVersionChecklist().trim() > 1 ){
+      console.log("Version mayor a 1"+ getVersionChecklist());
+      google.script.run.withSuccessHandler(setNameChecklist).copysheetExistente(getFolioQA(),getVersionChecklist(),getApp());
+    }else{
+      google.script.run.withSuccessHandler(setNameChecklist).copySheet(getFolioQA(),getApp(),getVersionChecklist());
+    }
+  }
+  
+  //Funcion para enviar el nombre del checklist generado y ejecuta otra funcion para recuperar
+  //el ID  y URL del mismo.
+  function setNameChecklist(name){
+  console.log("name check: "+name)
+    setNombreChecklist(name)
+    google.script.run.setStatusChecklist('EN PROCESO');
+    google.script.run.withSuccessHandler(setUrlChecklist).getDetailsChecklist(name);
+  }
+  
+  //funcion para enviar la url del checklist generado al formulario y al registro en la hoja de calculo.
+  function setUrlChecklist(data){
+    data.folioqa = getFolioQA()
+    google.script.run.setNameChecklistConcentrado(data)
+    
+    if(data.urlDoc == ""){
+       setUrl("No se pudo recuperar la URL, intenta otra vez.")
+       return
+    }
+    
+    setUrl(data.urlDoc)
+    setIdDoc(data.idDoc)   
+    
+    data.version= getVersionChecklist()
+    
+    google.script.run.setFoliQAchecklist(data)
+    google.script.run.setUrlConcentrado(data)
+  }
+  
+  function doSendEmail(){
+    var data = {};
+    
+    data.folioqa    = getFolioQA()
+    data.urlDoc     = getUrl()
+    data.aplicacion = getApp()
+    data.IdDoc      = getIdDoc()
+    data.emailto     = getEmailTo()
+    data.emailcc     = getEmailCc()
+    
+    google.script.run.withSuccessHandler(successEmail).createEmail(data)
+    //google.script.run.setAddCommenter(data)
+    cleanFields()
+  }
+  
+  function successEmail(){
+    //google.script.host.close()
+    google.script.run.showMesage("¡Correo enviado exitosamente!")
+  }
+  
+  function cleanFields(){
+     setFolioQA("")
+     setApp("")
+     setUrl("")
+     setIdDoc("")
+     setEmailBexqa("")
+     setEmailTo("")
+     setEmailCc("")
+     setNombreChecklist("")
+  }
+  
+  function getFolioQA(){
+    return document.getElementById("folioqa").value
+  }
+  
+  function setFolioQA(folio){
+    document.getElementById("folioqa").value = folio
+    M.updateTextFields();
+  }
+  
+  function getVersionChecklist(){
+    return document.getElementById("versionChecklist").value
+  }
+  
+  function setVersionChecklist(folio){
+    document.getElementById("versionChecklist").value = folio
+    M.updateTextFields();
+  }
+  
+  function getApp(){
+    return document.getElementById("app").value
+  }
+  
+  function setApp(app){
+    document.getElementById("app").value = app
+    M.updateTextFields();
+  }
+  
+  function getUrl(){
+    return document.getElementById("url").value
+  }
+  
+  function setUrl(url){
+    document.getElementById("url").value = url
+    M.updateTextFields();
+  }
+  
+  function getIdDoc(){
+    return document.getElementById("idDoc").value
+  }
+  
+  function setIdDoc(idDoc){
+    document.getElementById("idDoc").value = idDoc
+    M.updateTextFields();
+  }
+  
+  function getEmailBexqa(){
+    return document.getElementById("email_bexqa").value
+  }
+  
+  function setEmailBexqa(email){
+    document.getElementById("email_bexqa").value = email
+    M.updateTextFields();
+  }
+  
+  function getEmailTo(){
+    return document.getElementById("email_to").value
+  }
+  
+  function setEmailTo(email){
+    document.getElementById("email_to").value = email
+    M.updateTextFields();
+  }
+  
+  function getEmailCc(){
+    return document.getElementById("email_cc").value
+  }
+  
+  function setEmailCc(email){
+    document.getElementById("email_cc").value = email
+    M.updateTextFields();
+  }
+  
+  function getNombreChecklist(){
+     return document.getElementById("nombre_checklist").value
+  }
+  
+  function setNombreChecklist(name){
+     document.getElementById("nombre_checklist").value = name
+     M.updateTextFields();
+  }
+  
+
+</script>
+

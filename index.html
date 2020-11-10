@@ -1,0 +1,12 @@
+<div>
+<script>
+function cliHandler(e){
+document.getElementById("button").value = "Document is downloadable at url "+e
+}
+</script>
+
+<form>
+<input type="file" name="theFile">
+<input type="button"  value="UpLoad" id="button" onclick="google.script.run.withSuccessHandler(cliHandler).serverFunc(this.parentNode)">
+</form>
+</div>
