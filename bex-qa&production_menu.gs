@@ -6,7 +6,6 @@ function onOpen(e) {
      .addItem('Send Checklist for Email (sheet!'+sheetName+')', 'mainSendEmail')
      .addSeparator()
      .addItem('Fix All Excel (sheet!'+sheetName+')', 'fixAllExcel')
-     .addItem('Fix Only Duplicate (sheet!'+sheetName+')', 'fixOnlyDuplicate')
      .addItem('Fix Only Q in Progress (sheet!'+sheetName+')', 'fixOnlyQInProgress')
      .addItem('Fix Only Format Excel (sheet!'+sheetName+')', 'fixOnlyFormatExcel')
      .addItem('Fix Only Conditional Format Rule (sheet!'+sheetName+')', 'fixOnlyConditionalFormatRule')
