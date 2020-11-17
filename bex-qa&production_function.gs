@@ -63,7 +63,7 @@ function setFormatTitle(spreadsheet) {
      .setFontLine(null)
      .setFontColor('#ffffff')
      .setBackground('#073763')
-     .setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.SOLID)
+//     .setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.SOLID)
      .setHorizontalAlignment('center')
      .setVerticalAlignment('middle')
      .setWrapStrategy(SpreadsheetApp.WrapStrategy.WRAP);
@@ -79,7 +79,7 @@ function setFormatText(spreadsheet) {
      .setFontLine(null)
      .setFontColor('#000000')
      .setBackground(null)
-     .setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.SOLID)
+//     .setBorder(true, true, true, true, true, true, '#000000', SpreadsheetApp.BorderStyle.SOLID)
      .setHorizontalAlignment('center')
      .setVerticalAlignment('middle')
      .setWrapStrategy(SpreadsheetApp.WrapStrategy.WRAP);
